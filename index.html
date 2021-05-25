@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <span id="clock" class="hide"></span>
     <div class="gameboard">
         <div id="celeste" class="color celeste left" data-color="celeste"></div>
         <div id="violeta" class="color violeta right" data-color="violeta"></div>
@@ -16,8 +17,10 @@
         <div id="verde" class="color verde right" data-color="verde"></div>
         <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">PLAY!</button>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
-    <script src="programaJuego.js"></script>
+    <span id="level" class="hide"></span>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
+    <script defer src="gameInstructions.js"></script>
+    <script defer src="programaJuego.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,8 @@ class Juego {
 
     constructor() {
         this.inicializar = this.inicializar.bind(this);
+        this.clockIndicator = document.getElementById('clock');
+        this.levelIndicator = document.getElementById('level');
         this.inicializar();
         this.generarSecuencia();
         setTimeout(() => {
@@ -22,6 +24,12 @@ class Juego {
         this.siguienteNivel = this.siguienteNivel.bind(this);
         btnEmpezar.classList.add('hide');
         this.nivel = 1;
+        this.clock = 120;
+        this.gameTimer = null;
+        this.clockIndicator.innerText = this.clock;
+        this.levelIndicator.innerText = `${this.nivel}/10`;
+        this.clockIndicator.classList.remove('hide');
+        this.levelIndicator.classList.remove('hide');
         this.colores = {
             celeste,
             violeta,
@@ -35,8 +43,17 @@ class Juego {
     }
 
     siguienteNivel() {
+        clearInterval(this.gameTimer);
+        this.clock = 120;
         this.subNivel = 0;
+        this.levelIndicator.innerText = `${this.nivel}/10`;
         this.iluminarSecuencia();
+        this.gameTimer = setInterval(() => {
+            this.clockIndicator.innerText = --this.clock;
+            if (this.clock === 0) {
+                this.perdioJuego();
+            }
+        }, 1000);
         this.agregarEventosClick();
     }
 
@@ -117,7 +134,8 @@ class Juego {
     }
 
     ganoJuego() {
-        swal('Simon says:', 'Congratulations, You won!', 'success')
+        clearInterval(this.gameTimer);
+        swal('Simon says:', 'Congratulations, You won! 🏆', 'success')
             .then(() => {
                 this.inicializar();
                 btnEmpezar.classList.remove('hide');
@@ -125,7 +143,8 @@ class Juego {
     }
 
     perdioJuego() {
-        swal('Simon says:', 'You lost! :(', 'error')
+        clearInterval(this.gameTimer);
+        swal('Simon says:', 'You lost! 😢', 'error')
             .then(() => {
                 this.eliminarEventosClick();
                 this.inicializar();

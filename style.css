@@ -7,6 +7,8 @@ body {
     background: #dedede;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     height: 100vh;
 }
 
@@ -77,6 +79,28 @@ body {
     left: calc(50% - 200px);
 }
 
-.hide {
+#clock {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+#clock::before {
+    content: '⏳ ';
+}
+#clock::after {
+    content: ' ⌛️';
+}
+
+#level {
+    display: block;
+    font-size: 24px;
+    margin-top: 24px;
+}
+#level::before {
+    content: 'Level: ';
+    font-weight: bold;
+}
+
+.hide, #clock.hide, #level.hide {
     display: none;
 }
